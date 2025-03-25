@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Hello World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <div>
+            <span data-bind="text: greeting"></span>
+            <span>&nbsp;</span>
+            <span data-bind="text: planet"></span>
+            <span>!</span>
+            <span class="ajax-loader" data-bind="visible: loaderVisible">
+                <img src="img/loader.gif">
+            </span>
+        </div>
+
+        <div class="language-switch">
+            Change language:
+            <select data-bind="options: languages, value: language"></select>
+        </div>
+    </main>
+
+    <!-- KnockoutJS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    ports:
+      - "81:80"
+    environment:
+      - RMQ_HOST=rmq
+      - RMQ_USERNAME=application
+      - RMQ_PASSWORD=pepsi
+
+  web:
+    build:
+      context: Web
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - API_URL=http://api:80
+      
+  seq:
+    image: datalust/seq
+    ports:
+      - "5341:5341"
+      - "5342:80"
+    environment:
+      - ACCEPT_EULA=Y
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
